@@ -63,7 +63,7 @@ window.onload = wrap_img;
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/jupyter-blog/search/">Search</a><a class="page-link" href="/jupyter-blog/categories/">Tags</a></div>
+        <div class="trigger"><a class="page-link" href="/jupyter-blog/https:/moewex.github.io/">Home</a><a class="page-link" href="/jupyter-blog/search/">Search</a><a class="page-link" href="/jupyter-blog/categories/">Tags</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -143,7 +143,7 @@ window.onload = wrap_img;
 <h1 id="Introduction">
 <a class="anchor" href="#Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction<a class="anchor-link" href="#Introduction"> </a>
 </h1>
-<p>Recently, I stumbled upon <a href="https://github.com/fastai/fastai">fastai</a>, a deep learning library with a very eye catching slogan: <em>Making neural nets uncool again</em>.
+<p>Recently, I stumbled upon <a href="https://github.com/fastai/fastai">fastai</a>, a deep learning library build upon PyTorch with a very eye catching slogan: <em>Making neural nets uncool again</em>.
 As it turns out, there is also a very <a href="https://course.fast.ai/">good course</a> on this library from one of its creators, Jeremy Howard, that is very much hands on.</p>
 <p>The task of Lesson 3 is to build a Digit Classifier from hand written images based on the <a href="http://yann.lecun.com/exdb/mnist/">MNIST dataset</a>.
 But before training any models, Jeremy explains that one should always create a simplistic baseline to later put the performance of the fancy machine learning models into perspective.
@@ -636,8 +636,9 @@ But let's see what happens if we supply the complete stack of valid threes, i.e.
 And this rank-1 tensor comprises the L1 norm for each three of the validation dataset.
 But why can we substract a rank-2 tensor (the b in the l1_norm function) form a rank_3 tensor (the a in the l1_norm function)?</p>
 <p>Jeremy explains it like so:</p>
-<p><em>The magic trick is that PyTorch, when it tries to perform a simple subtraction operation between two tensors of different ranks, will use broadcasting. That is, it will automatically expand the tensor [actually PyTorch only pretends to expand the tensor, it does not allocate any extra memory] with the smaller rank to have the same size as the one with the larger rank. Broadcasting is an important capability that makes tensor code much easier to write. After broadcasting so the two argument tensors have the same rank, PyTorch applies its usual logic for two tensors of the same rank: it performs the operation on each corresponding element of the two tensors, and returns the tensor result.</em></p>
-<p>This is also why we supplied (-1,-2) to the mean function. Since we always want the mean of the last two axes, no matter what rank the provided tensors have.</p>
+
+<pre><code>The magic trick is that PyTorch, when it tries to perform a simple subtraction operation between two tensors of different ranks, will use broadcasting. That is, it will automatically expand the tensor [actually PyTorch only pretends to expand the tensor, it does not allocate any extra memory] with the smaller rank to have the same size as the one with the larger rank. Broadcasting is an important capability that makes tensor code much easier to write. After broadcasting so the two argument tensors have the same rank, PyTorch applies its usual logic for two tensors of the same rank: it performs the operation on each corresponding element of the two tensors, and returns the tensor result.</code></pre>
+<p>This is also why we supplied (-1,-2) to the mean function: We always want the mean of the last two axes, no matter what rank the provided tensors have.</p>
 
 </div>
 </div>
