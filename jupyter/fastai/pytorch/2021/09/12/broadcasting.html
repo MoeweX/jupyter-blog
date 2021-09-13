@@ -636,9 +636,10 @@ But let's see what happens if we supply the complete stack of valid threes, i.e.
 And this rank-1 tensor comprises the L1 norm for each three of the validation dataset.
 But why can we substract a rank-2 tensor (the b in the l1_norm function) form a rank_3 tensor (the a in the l1_norm function)?</p>
 <p>Jeremy explains it like so:</p>
-
-<pre><code>The magic trick is that PyTorch, when it tries to perform a simple subtraction operation between two tensors of different ranks, will use broadcasting. That is, it will automatically expand the tensor [actually PyTorch only pretends to expand the tensor, it does not allocate any extra memory] with the smaller rank to have the same size as the one with the larger rank. Broadcasting is an important capability that makes tensor code much easier to write. After broadcasting so the two argument tensors have the same rank, PyTorch applies its usual logic for two tensors of the same rank: it performs the operation on each corresponding element of the two tensors, and returns the tensor result.</code></pre>
-<p>This is also why we supplied (-1,-2) to the mean function: We always want the mean of the last two axes, no matter what rank the provided tensors have.</p>
+<blockquote>
+<p>The magic trick is that PyTorch, when it tries to perform a simple subtraction operation between two tensors of different ranks, will use broadcasting. That is, it will automatically expand the tensor [actually PyTorch only pretends to expand the tensor, it does not allocate any extra memory] with the smaller rank to have the same size as the one with the larger rank. Broadcasting is an important capability that makes tensor code much easier to write. After broadcasting so the two argument tensors have the same rank, PyTorch applies its usual logic for two tensors of the same rank:it performs the operation on each corresponding element of the two tensors, and returns the tensor result.
+This is also why we supplied (-1,-2) to the mean function: We always want the mean of the last two axes, no matter what rank the provided tensors have.</p>
+</blockquote>
 
 </div>
 </div>
